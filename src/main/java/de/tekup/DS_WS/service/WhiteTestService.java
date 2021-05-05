@@ -48,7 +48,6 @@ public class WhiteTestService {
 		falseAddress.setStreet("false street");
 		falseAddress.setPosteCode("no poste code");
 		
-
 		students.add(new Student(1,"student1",a1));
 		students.add(new Student(2,"student2",a2));
 		students.add(new Student(3,"student3",a3));
@@ -58,7 +57,6 @@ public class WhiteTestService {
 		
 		Student falseStudent = new Student (-1, "false",falseAddress);
 		Exam falseExam = new Exam ("-1","false");
-		
 		
 		WhiteTestResponse response = new ObjectFactory().createWhiteTestResponse();
 		
@@ -91,6 +89,7 @@ public class WhiteTestService {
 				response.setDate(now);
 			}
 		}
+
 		return response;
 	}
 

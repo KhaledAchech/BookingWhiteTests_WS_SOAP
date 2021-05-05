@@ -25,8 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="studentId" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="examCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="ListExams" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,54 +36,28 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "studentId",
-    "examCode"
+    "listExams"
 })
-@XmlRootElement(name = "StudentRequest")
-public class StudentRequest {
+@XmlRootElement(name = "ExamsRequest")
+public class ExamsRequest {
 
-    protected int studentId;
-    @XmlElement(required = true)
-    protected String examCode;
+    @XmlElement(name = "ListExams")
+    protected boolean listExams;
 
     /**
-     * Obtient la valeur de la propriété studentId.
+     * Obtient la valeur de la propriété listExams.
      * 
      */
-    public int getStudentId() {
-        return studentId;
+    public boolean isListExams() {
+        return listExams;
     }
 
     /**
-     * Définit la valeur de la propriété studentId.
+     * Définit la valeur de la propriété listExams.
      * 
      */
-    public void setStudentId(int value) {
-        this.studentId = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété examCode.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExamCode() {
-        return examCode;
-    }
-
-    /**
-     * Définit la valeur de la propriété examCode.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExamCode(String value) {
-        this.examCode = value;
+    public void setListExams(boolean value) {
+        this.listExams = value;
     }
 
 }

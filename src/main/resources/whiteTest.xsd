@@ -20,6 +20,22 @@ targetNamespace="http://www.tekup.de/soap/models/whitetest" elementFormDefault="
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
+    
+     <xsd:element name="ExamsRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="ListExams" type="xsd:boolean"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+       <xsd:element name="ExamsResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="exam" type="tns:Exam" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
  
     <xsd:complexType name="Student">
         <xsd:sequence>
