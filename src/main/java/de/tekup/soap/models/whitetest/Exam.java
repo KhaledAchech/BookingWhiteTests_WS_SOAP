@@ -94,4 +94,14 @@ public class Exam {
         this.name = value;
     }
 
+	public Exam(String code, String name) {
+		super();
+		this.code = code;
+		this.name = name;
+	}
+
+	public Exam() {
+		super();
+	}
+
 }
