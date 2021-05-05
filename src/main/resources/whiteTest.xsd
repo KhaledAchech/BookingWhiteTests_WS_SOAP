@@ -25,7 +25,15 @@ targetNamespace="http://www.tekup.de/soap/models/whitetest" elementFormDefault="
         <xsd:sequence>
 			<xsd:element name="id" type="xsd:int"/>
             <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="address" type="xsd:string"/>
+            <xsd:element name="address">
+            <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="street" type="xsd:string" />
+				<xsd:element name="city" type="xsd:string" />
+				<xsd:element name="poste-code" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+		</xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 	

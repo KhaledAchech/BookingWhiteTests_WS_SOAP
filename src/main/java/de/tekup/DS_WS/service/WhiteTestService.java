@@ -16,6 +16,7 @@ import de.tekup.soap.models.whitetest.ObjectFactory;
 import de.tekup.soap.models.whitetest.StudentRequest;
 import de.tekup.soap.models.whitetest.WhiteTestResponse;
 import de.tekup.soap.models.whitetest.Student;
+import de.tekup.soap.models.whitetest.Student.Address;
 
 @Service
 public class WhiteTestService {
@@ -27,18 +28,40 @@ public class WhiteTestService {
 	public WhiteTestResponse checkExam(StudentRequest studentRequest) throws DatatypeConfigurationException
 	{
 		
+		Address a1 = new Address();
+		a1.setCity("city1");
+		a1.setStreet("street1");
+		a1.setPosteCode("123456");
+		
+		Address a2 = new Address();
+		a2.setCity("city2");
+		a2.setStreet("street2");
+		a2.setPosteCode("123456");
+		
+		Address a3 = new Address();
+		a3.setCity("city3");
+		a3.setStreet("street3");
+		a3.setPosteCode("123456");
+		
+		Address falseAddress = new Address();
+		falseAddress.setCity("false city");
+		falseAddress.setStreet("false street");
+		falseAddress.setPosteCode("no poste code");
+		
 
-		students.add(new Student(1,"student1","address1"));
-		students.add(new Student(2,"student2","address2"));
-		students.add(new Student(3,"student3","address3"));
+		students.add(new Student(1,"student1",a1));
+		students.add(new Student(2,"student2",a2));
+		students.add(new Student(3,"student3",a3));
 		
 		exams.add(new Exam("code_OCA","OCA"));
 		exams.add(new Exam("code_OCP","OCP"));
 		
-		Student falseStudent = new Student (-1, "false","false");
+		Student falseStudent = new Student (-1, "false",falseAddress);
 		Exam falseExam = new Exam ("-1","false");
 		
+		
 		WhiteTestResponse response = new ObjectFactory().createWhiteTestResponse();
+		
 		
 		//default response
 		response.setExam(falseExam);
@@ -68,7 +91,6 @@ public class WhiteTestService {
 				response.setDate(now);
 			}
 		}
-
 		return response;
 	}
 

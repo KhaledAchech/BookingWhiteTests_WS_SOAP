@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.05.03 à 02:23:39 AM CEST 
+// Généré le : 2021.05.06 à 12:55:16 AM CEST 
 //
 
 
@@ -26,7 +26,19 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="address">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="street" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="poste-code" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +59,7 @@ public class Student {
     @XmlElement(required = true)
     protected String name;
     @XmlElement(required = true)
-    protected String address;
+    protected Student.Address address;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -94,10 +106,10 @@ public class Student {
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Student.Address }
      *     
      */
-    public String getAddress() {
+    public Student.Address getAddress() {
         return address;
     }
 
@@ -106,14 +118,126 @@ public class Student {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Student.Address }
      *     
      */
-    public void setAddress(String value) {
+    public void setAddress(Student.Address value) {
         this.address = value;
     }
 
-	public Student(int id, String name, String address) {
+
+    /**
+     * <p>Classe Java pour anonymous complex type.
+     * 
+     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="street" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="poste-code" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "street",
+        "city",
+        "posteCode"
+    })
+    public static class Address {
+
+        @XmlElement(required = true)
+        protected String street;
+        @XmlElement(required = true)
+        protected String city;
+        @XmlElement(name = "poste-code", required = true)
+        protected String posteCode;
+
+        /**
+         * Obtient la valeur de la propriété street.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getStreet() {
+            return street;
+        }
+
+        /**
+         * Définit la valeur de la propriété street.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setStreet(String value) {
+            this.street = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété city.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getCity() {
+            return city;
+        }
+
+        /**
+         * Définit la valeur de la propriété city.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setCity(String value) {
+            this.city = value;
+        }
+
+        /**
+         * Obtient la valeur de la propriété posteCode.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getPosteCode() {
+            return posteCode;
+        }
+
+        /**
+         * Définit la valeur de la propriété posteCode.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setPosteCode(String value) {
+            this.posteCode = value;
+        }
+
+    }
+
+
+	public Student(int id, String name, Address address) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -124,10 +248,5 @@ public class Student {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", address=" + address + "]";
-	}
-
-	
+    
 }
